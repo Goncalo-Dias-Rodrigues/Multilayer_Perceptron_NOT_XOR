@@ -43,9 +43,9 @@ public class Matrix {
 
     /**
      * Randomizes the values in a matrix based on a seed and the given dimensions
-     * @param rows
-     * @param cols
-     * @param seed
+     * @param rows number of rows in the matrix
+     * @param cols number of columns in the matrix
+     * @param seed seed that will randomize the values of the matrix
      * @return filled matrix
      */
     static public Matrix Rand(int rows, int cols, int seed) {
@@ -65,8 +65,8 @@ public class Matrix {
 
     /**
      * Gets the values from the coordinates in the matrix
-     * @param row
-     * @param col
+     * @param row row of the value
+     * @param col column of the value
      * @return value in the matrix
      */
     public double get(int row, int col) {
@@ -94,8 +94,11 @@ public class Matrix {
     //  Element operations
     //==============================================================
 
-    //Apply Function<Double, Double> to all elements of the matrix
-    //store the result in matrix result
+    /**
+     * Apply a given function to all elements of the matrix
+     * @param fnc function to calculate new values
+     * @return matrix with new values given by the given function
+     */
     private Matrix traverse(Function<Double, Double> fnc) {
         Matrix result = new Matrix(rows, cols);
 
@@ -111,13 +114,21 @@ public class Matrix {
         return traverse(fnc);
     }
 
-    //multiply matrix by scalar
+    /**
+     * Multiply the matrix by a scalar
+     * @param scalar
+     * @return
+     */
     public Matrix mult(double scalar) {
 
         // insert code here to multiply all elements by scalar
     }
 
-    //add scalar to matrix
+    /**
+     * Add a scalar to the matrix
+     * @param scalar
+     * @return
+     */
     public Matrix add(double scalar) {
 
         // insert code here to add to all elements the scalar
