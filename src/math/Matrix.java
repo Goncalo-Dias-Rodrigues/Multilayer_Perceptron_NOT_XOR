@@ -16,13 +16,22 @@ public class Matrix {
     private double[][] data;
     private int rows, cols;
 
+
+    /**
+     * Matrix constructor that only sets the dimensions of the matrix
+     * @param rows
+     * @param cols
+     */
     public Matrix(int rows, int cols) {
         data = new double[rows][cols];
         this.rows = rows;
         this.cols = cols;
     }
 
-
+    /**
+     * Matrix constructor that creates a matrix from an array of values
+     * @param data
+     */
     public Matrix(double[][] data) {
         this.rows = data.length;
         this.cols = data[0].length;
@@ -32,7 +41,13 @@ public class Matrix {
 
     }
 
-
+    /**
+     * Randomizes the values in a matrix based on a seed and the given dimensions
+     * @param rows
+     * @param cols
+     * @param seed
+     * @return filled matrix
+     */
     static public Matrix Rand(int rows, int cols, int seed) {
         Matrix out = new Matrix(rows, cols);
 
@@ -48,12 +63,31 @@ public class Matrix {
     }
 
 
-    //accessors
+    /**
+     * Gets the values from the coordinates in the matrix
+     * @param row
+     * @param col
+     * @return value in the matrix
+     */
     public double get(int row, int col) {
         return data[row][col];
     }
-    public int rows() { return rows; }
-    public int cols() { return cols; }
+
+    /**
+     * Gets the number of rows in the matrix
+     * @return number of rows
+     */
+    public int rows() {
+        return rows;
+    }
+
+    /**
+     * Gets the number of columns of the matrix
+     * @return number of columns
+     */
+    public int cols() {
+        return cols;
+    }
 
 
     //==============================================================
