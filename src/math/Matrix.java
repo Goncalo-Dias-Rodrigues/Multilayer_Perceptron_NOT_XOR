@@ -122,8 +122,8 @@ public class Matrix {
     public Matrix mult(double scalar) {
         Matrix matrixResult = new Matrix(this.data);
 
-        for (int i = 0; i < matrixResult.cols; i++) {
-            for (int j = 0; j < matrixResult.rows; j++) {
+        for (int i = 0; i < matrixResult.rows; i++) {
+            for (int j = 0; j < matrixResult.cols; j++) {
                 matrixResult.data[i][j] = matrixResult.data[i][j] * scalar;
             }
         }
@@ -139,8 +139,8 @@ public class Matrix {
     public Matrix add(double scalar) {
         Matrix matrixResult = new Matrix(this.data);
 
-        for (int i = 0; i < matrixResult.cols; i++) {
-            for (int j = 0; j < matrixResult.rows; j++) {
+        for (int i = 0; i < matrixResult.rows; i++) {
+            for (int j = 0; j < matrixResult.cols; j++) {
                 matrixResult.data[i][j] = matrixResult.data[i][j] + scalar;
             }
         }
@@ -156,8 +156,8 @@ public class Matrix {
     public Matrix subFromScalar(double scalar) {
         Matrix matrixResult = new Matrix(this.data);
 
-        for (int i = 0; i < matrixResult.cols; i++) {
-            for (int j = 0; j < matrixResult.rows; j++) {
+        for (int i = 0; i < matrixResult.rows; i++) {
+            for (int j = 0; j < matrixResult.cols; j++) {
                 matrixResult.data[i][j] = scalar - matrixResult.data[i][j];
             }
         }
@@ -233,8 +233,8 @@ public class Matrix {
     public double sum() {
         double total = 0.0;
 
-        for (int i = 0; i < this.cols; i++) {
-            for (int j = 0; j < this.rows; j++) {
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
                 total += this.data[i][j];
             }
         }

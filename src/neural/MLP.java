@@ -74,24 +74,20 @@ public class MLP {
                 e = y.sub(yp[l + 1]);                   //e = y - yp[l+1]
             }
             else {                                      //propagate error to previous layer
-
-                // insert code here to compute the error of layer l:
-                //
                 //      e = delta * w[l+1]^T
-
+                e = delta.dot(w[l+1].transpose());
             }
 
-            // insert code here to compute Delta:
-            //
             //      dy = yp[l+1] .* (1-yp[l+1])
             //      Note: to compute dy use Sigmoid class derivative
             //	          similarly as in predict()
             //
             //      delta = e .* dy
+            Matrix dy = yp[l+1].apply(act[l].derivative());
+            delta = e.mult(dy);
 
-            // insert code here to update the weights
-            //
             //      w[l] += yp[l]^T * delta * lr
+            w[l] = w[l].add(yp[l].transpose().dot(delta).mult(lr));
 
             // update biases
             b[l] = b[l].addRowVector(delta.sumColumns()).mult(lr);
@@ -117,5 +113,16 @@ public class MLP {
             mse[epoch] = e.dot(e.transpose()).get(0, 0) / nSamples;
         }
         return mse;
+    }
+    public void setWeights(Matrix[] weights, Matrix[] biases) {
+        if (weights.length != this.w.length || biases.length != this.b.length) {
+            throw new IllegalArgumentException("Invalid number of weight/bias matrices.");
+        }
+        this.w = weights;
+        this.b = biases;
+    }
+
+    public Matrix[] getWeights() {
+        return w;
     }
 }
